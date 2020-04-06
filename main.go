@@ -69,7 +69,8 @@ func run() error {
 func setupAndRunGin(db *datalayer.PostgresDataAdapter) error {
     handlerContext := handlers.NewHandlerContext(db)
 
-    r := gin.New()
+    r := gin.Default()
+    gin.ForceConsoleColor()
 
     healthGroup := r.Group("health")
     healthGroup.GET("/ping", func(ctx *gin.Context) {
